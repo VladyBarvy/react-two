@@ -1,0 +1,12 @@
+.task-list {
+  /* width: 1000px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 auto; */
+  display: flex;
+  flex-wrap: wrap; /* Перенос строк */
+  width: 1000px;
+  margin: 0 auto; /* Центрирование */
+  gap: 20px; /* Отступы между карточками */
+}

@@ -1,5 +1,6 @@
 import React from 'react';
 import TaskCard from './TaskCard';
+import '../styles/TaskList.css';
 
 const TaskList = ({ tasks, deleteTask, toggleTaskStatus, updateTask }) => {
   return (

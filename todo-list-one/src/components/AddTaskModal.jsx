@@ -1,5 +1,6 @@
 // src/components/AddTaskModal.js
 import React, { useState } from 'react';
+import '../styles/index.css';
 
 const AddTaskModal = ({ addTask, closeModal }) => {
   const [taskTitle, setTaskTitle] = useState('');

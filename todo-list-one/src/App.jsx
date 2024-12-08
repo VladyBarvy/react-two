@@ -11,6 +11,8 @@ import ListGroup from './components/ListGroup.jsx';
 import SoundButton from './components/SoundButton.jsx';
 import ChartComp from './components/ChartComp.jsx';
 import TaskFilters from './components/TaskFilters.jsx';
+import SearchForm from './components/SearchForm.jsx';
+import axios from 'axios';
 
 const itemsList = [
   { name: 'first', id: 1 },
@@ -46,6 +48,8 @@ function App() {
   const [filteredTasks, setFilteredTasks] = useState([]);
   const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState(false);
 
+  const [allUsers, setAllUsers] = useState([]);
+
   useEffect(() => {
     if (isDarkMode) {
       document.body.classList.add('dark-mode');
@@ -80,6 +84,7 @@ function App() {
       localStorage.setItem('tasks', JSON.stringify(tasks));
     }
   }, [tasks]);
+
 
 
 
@@ -133,9 +138,9 @@ function App() {
     alert('hi');
   };
 
-const showAlert = () => {
-  setIsAddTaskModalOpen(true);
-};
+  const showAlert = () => {
+    setIsAddTaskModalOpen(true);
+  };
 
   const handleClick = () => {
     playSound();
@@ -147,49 +152,122 @@ const showAlert = () => {
 
 
 
+
+
+
+
+
+
+
+
+
+  const renderUsers = () => {
+    return allUsers.map((user) => {
+      return (
+        <tr key={user.id}>
+          <td>{user.id}</td>
+          <td>{user.title}</td>
+          <td>{user.description}</td>
+          <td>{user.dueDate}</td>
+        </tr>
+      );
+    });
+  };
+
+
+
+  // useEffect(() => {
+  //   fetch("/users")
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setAllUsers(data.users);
+  //       console.log(data.users);
+  //     });
+  // }, []);
+
+
+
+
+  // useEffect(() => {
+
+  //   const fetchUsers = async () => {
+  //     const response = await fetch('/users');
+  //     const data = await response.json();
+  //     //const sortedUsers = data.users.sort((a, b) => a.name.localeCompare(b.name));
+  //     setAllUsers(data.users);
+  //   };
+
+  //   fetchUsers();
+  // }, []);
+
+
+
+
+
+  // useEffect(() => {
+  //   fetch("/users")
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setAllUsers(data.users);
+  //       console.log('birs');
+  //       console.log(allUsers);
+  //     });
+  // }, []);
+
+
+
+
+
+  // useEffect(() => {
+  //   const fetchUsers = async () => {
+  //     try {
+  //       // Выполняем асинхронный запрос с помощью Axios
+  //       const response = await axios.get('/users');
+  //       const data = response.data;
+
+  //       // Обновляем состояние
+  //       setAllUsers(data);
+
+  //       // Логируем полученные данные
+  //       console.log('birs');
+  //       console.log(response);
+  //     } catch (error) {
+  //       console.error('Error fetching users:', error);
+  //     }
+  //   };
+
+  //   fetchUsers();
+  // }, []); // Пустой массив зависимостей, чтобы запрос выполнялся только при монтировании компонента
+
+
+
+
+
+
   return (
     <div>
-      <div className="head_title_name">
-        <h1 className="change-text">Task lisT</h1>
-      </div>
-      {/* <h1 className="title">Task lisT</h1> */}
-
 
       <div className="global-style">
 
 
+        <div className="head_title_name">
+          <h1 className="change-text">Task lisT</h1>
+        </div>
+
+
+        <button className="button3" onClick={handleClick}>
+          Add task
+        </button>
+
         <div className="button-container-1">
-
-          {/* <button className="add-button" onClick={() => setIsAddTaskModalOpen(true)}>
-            Добавить
-          </button> */}
-
-
-
 
           <TaskFilters tasks={tasks} setFilteredTasks={setFilteredTasks} />
 
-
-          <button className="button3" onClick={handleClick}>
-            Add task
-          </button>
-
+          <SearchForm tasks={tasks} setFilteredTasks={setFilteredTasks} />
 
           <ThemeSwitcher />
 
-          
         </div>
-
-        {/* <div>
-          <TaskFilters tasks={tasks} setFilteredTasks={setFilteredTasks} />
-        </div> */}
-
-        {/* <div className="task-filters">
-          <button onClick={() => filterTasks('all')}>Все</button>
-          <button onClick={() => filterTasks('completed')}>Готово</button>
-          <button onClick={() => filterTasks('in-progress')}>В работе</button>
-        </div> */}
-
 
         <div className="task-list-container">
           <TaskList
@@ -206,10 +284,20 @@ const showAlert = () => {
 
 
 
+      {/* <hr />
 
 
-
-
+      <table>
+        <thead>
+          <tr>
+            <td>id</td>
+            <td>title</td>
+            <td>description</td>
+            <td>dueDate</td>
+          </tr>
+        </thead>
+        <tbody>{renderUsers()}</tbody>
+      </table> */}
 
 
 
@@ -232,26 +320,26 @@ export default App;
 
 
 
-      /* <div>
-        <ListGroup>
-          <p>one</p>
-          <p>two</p>
-          <p>three</p>
-        </ListGroup>
+/* <div>
+  <ListGroup>
+    <p>one</p>
+    <p>two</p>
+    <p>three</p>
+  </ListGroup>
 
-        <CardThree title="Card Super">
-          <p>This is a paragraph inside Card 1.</p>
-          <button>Click me</button>
-        </CardThree>
+  <CardThree title="Card Super">
+    <p>This is a paragraph inside Card 1.</p>
+    <button>Click me</button>
+  </CardThree>
 
-        <TableComp data={chop} onRemove={handleRemove} />
-
-
-        <div style={{width: "400px"}}>
-          <ChartComp />
-        </div>
+  <TableComp data={chop} onRemove={handleRemove} />
 
 
-        <SoundButton />
-      </div> */
+  <div style={{width: "400px"}}>
+    <ChartComp />
+  </div>
+
+
+  <SoundButton />
+</div> */
 

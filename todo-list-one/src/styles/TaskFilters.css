@@ -1,0 +1,42 @@
+/* Контейнер для радиокнопок */
+.task-filters {
+  display: flex; 
+  align-items: center;
+  gap: 15px; 
+
+}
+
+/* Увеличиваем размер радиокнопок */
+.task-filters input[type="radio"] {
+  appearance: none; /* Убираем стандартный стиль радиокнопок */
+  width: 20px; /* Ширина круга */
+  height: 20px; /* Высота круга */
+  border: 2px solid #3498db; /* Граница круга */
+  border-radius: 50%; /* Делаем круг */
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+
+}
+
+/* Состояние по умолчанию */
+.task-filters input[type="radio"]:checked {
+  background-color: #3498db; /* Цвет заполнения, если выбран */
+  border-color: #2980b9; /* Цвет границы при выборе */
+}
+
+/* Состояние при наведении */
+.task-filters input[type="radio"]:hover {
+  border-color: #2980b9; /* Темнее при наведении */
+}
+
+/* Расположение меток */
+.task-filters label {
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+  cursor: pointer;
+  vertical-align: middle;
+}
+

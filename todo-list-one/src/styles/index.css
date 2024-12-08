@@ -1,9 +1,17 @@
 /* src/styles.css */
 
 .global-style {
-  margin-left: auto;
+  /* margin-left: auto;
   margin-right: auto;
+  text-align: center; */
+
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+
 }
 
 
@@ -228,6 +236,7 @@ h1.change-text:hover{
   gap: 50px; /* Расстояние между элементами */
   justify-content: center; /* Центрирование компонентов внутри строки */
   align-items: center; /* Вертикальное выравнивание */
+  padding: 20px;
   /* padding: 20px;
   background-color: #ffffff;
   border: 1px solid #ddd;
@@ -352,3 +361,6 @@ h1.change-text:hover{
  }
 
 
+.task-list-container {
+  padding: 20px;
+}

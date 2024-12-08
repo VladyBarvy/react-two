@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../styles/TaskFilters.css';
 
 const TaskFilters = ({ tasks, setFilteredTasks }) => {
   const [selectedFilter, setSelectedFilter] = useState('all'); // Состояние для выбранной опции

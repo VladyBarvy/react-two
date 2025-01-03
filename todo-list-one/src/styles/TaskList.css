@@ -6,7 +6,13 @@
   margin: 0 auto; */
   display: flex;
   flex-wrap: wrap; /* Перенос строк */
-  width: 1000px;
+
+ justify-content: center; /* Размещаем содержимое по центру */
+  align-items: center; /* Выравниваем содержимое по вертикали */
+
+
+
+  max-width: 1000px;
   margin: 0 auto; /* Центрирование */
   gap: 20px; /* Отступы между карточками */
 }

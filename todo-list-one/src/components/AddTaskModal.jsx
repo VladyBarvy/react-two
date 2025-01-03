@@ -1,6 +1,6 @@
 // src/components/AddTaskModal.js
 import React, { useState } from 'react';
-import '../styles/index.css';
+import '../styles/AddTaskModal.css';
 
 const AddTaskModal = ({ addTask, closeModal }) => {
   const [taskTitle, setTaskTitle] = useState('');
@@ -29,35 +29,48 @@ const AddTaskModal = ({ addTask, closeModal }) => {
         <div className="modal-header">
           <h2>Добавить задачу</h2>
         </div>
+
+
+
         <div className="modal-body">
-          <div>
-            <label htmlFor="task-title">Тема</label>
+
+          <div className="form-input-case">
             <input
               type="text"
               id="task-title"
+              className="form-input"
+              placeholder="Тема задачи"
               value={taskTitle}
               onChange={(e) => setTaskTitle(e.target.value)}
             />
           </div>
-          <div>
-            <label htmlFor="task-description">Задача</label>
+
+          <div className="form-input-case">
             <input
               type="text"
               id="task-description"
+              className="form-input"
+              placeholder="Содержание задачи"
               value={taskDescription}
               onChange={(e) => setTaskDescription(e.target.value)}
             />
           </div>
-          <div>
-            <label htmlFor="task-due-date">Срок</label>
+
+          <div className="form-input-case">
             <input
+              className="form-input"
               type="datetime-local"
               id="task-due-date"
+              placeholder="Срок выполнения"
               value={dueDate}
               onChange={(e) => setDueDate(e.target.value)}
             />
           </div>
+
         </div>
+
+
+
         <div className="modal-footer">
           <button className="cancel-button" onClick={closeModal}>
             Отмена
@@ -66,6 +79,10 @@ const AddTaskModal = ({ addTask, closeModal }) => {
             Добавить
           </button>
         </div>
+
+
+
+
       </div>
     </div>
   );

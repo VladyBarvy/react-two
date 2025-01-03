@@ -233,6 +233,7 @@ h1.change-text:hover{
 .button-container-1 {
   display: flex; /* Flexbox для размещения компонентов в строку */
   flex-direction: row; /* Горизонтальное направление */
+  flex-wrap: wrap; /* Перенос строк */
   gap: 50px; /* Расстояние между элементами */
   justify-content: center; /* Центрирование компонентов внутри строки */
   align-items: center; /* Вертикальное выравнивание */
